@@ -15,39 +15,39 @@ final class UnitConversionProviderTests: XCTestCase {
     
     func testConversionFromCelciusToFahrenheit() {
         let testValue = 0.0
-        let fahrenheit = subject.convertTemperature(value: testValue, fromUnit: .celsius, toUnit: .fahrenheit)
+        let fahrenheit = subject.convertTemperature(value: testValue, from: .celsius, to: .fahrenheit)
         XCTAssertEqual(fahrenheit.value.rounded(.toNearestOrAwayFromZero), 32.0)
     }
     
     func testConversionFromFahrenheitToCelcius() {
         let testValue = 32.0
-        let celcius = subject.convertTemperature(value: testValue, fromUnit: .fahrenheit, toUnit: .celsius)
+        let celcius = subject.convertTemperature(value: testValue, from: .fahrenheit, to: .celsius)
         XCTAssertEqual(celcius.value.rounded(.toNearestOrAwayFromZero), 0.0)
     }
     
     func testConversionFromMilesToKilometers() {
         let testValue = 3.2
-        let kilometers = subject.convertDistance(value: testValue, fromUnit: .miles, toUnit: .kilometers)
+        let kilometers = subject.convertDistance(value: testValue, from: .miles, to: .kilometers)
         XCTAssertEqual(kilometers.value.rounded(.toNearestOrAwayFromZero), 5.0)
     }
     
     func testConversionFromKilometersToMiles() {
         let testValue = 5.0
-        let miles = subject.convertDistance(value: testValue, fromUnit: .kilometers, toUnit: .miles)
+        let miles = subject.convertDistance(value: testValue, from: .kilometers, to: .miles)
         XCTAssertEqual(miles.value.rounded(.toNearestOrAwayFromZero), 3.0)
     }
     
     @available(iOS 13.0, *)
     func testConversionFromSecondsToMilliseconds() {
         let testValue = 1.0
-        let milliseconds = subject.convertTime(value: testValue, fromUnit: .seconds, toUnit: .milliseconds)
+        let milliseconds = subject.convertTime(value: testValue, from: .seconds, to: .milliseconds)
         XCTAssertEqual(milliseconds.value.rounded(.toNearestOrAwayFromZero), 1000.0)
     }
     
     @available(iOS 13.0, *)
     func testConversionFromMillisecondsToSeconds() {
         let testValue = 1000.0
-        let seconds = subject.convertTime(value: testValue, fromUnit: .milliseconds, toUnit: .seconds)
+        let seconds = subject.convertTime(value: testValue, from: .milliseconds, to: .seconds)
         XCTAssertEqual(seconds.value.rounded(.toNearestOrAwayFromZero), 1.0)
     }
     
