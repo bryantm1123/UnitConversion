@@ -8,6 +8,9 @@ public protocol UnitConversionProviding {
 }
 
 public final class UnitConversionProvider: UnitConversionProviding {
+    
+    public init() {}
+    
     public func convertTemperature(value: Double, from: UnitTemperature, to: UnitTemperature) -> Measurement<UnitTemperature> {
         Measurement(value: value, unit: from).converted(to: to)
     }
