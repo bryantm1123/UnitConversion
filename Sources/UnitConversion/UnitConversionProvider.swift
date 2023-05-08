@@ -1,23 +1,23 @@
 import Foundation
 
 public protocol UnitConversionProviding {
-    func convertTemperature(value: Double, fromUnit: UnitTemperature, toUnit: UnitTemperature) -> Measurement<UnitTemperature>
-    func convertDistance(value: Double, fromUnit: UnitLength, toUnit: UnitLength) -> Measurement<UnitLength>
-    func convertTime(value: Double, fromUnit: UnitDuration, toUnit: UnitDuration) -> Measurement<UnitDuration>
+    func convertTemperature(value: Double, from: UnitTemperature, to: UnitTemperature) -> Measurement<UnitTemperature>
+    func convertDistance(value: Double, from: UnitLength, to: UnitLength) -> Measurement<UnitLength>
+    func convertTime(value: Double, from: UnitDuration, to: UnitDuration) -> Measurement<UnitDuration>
     func convertTime(from time: String) -> String?
 }
 
 final class UnitConversionProvider: UnitConversionProviding {
-    func convertTemperature(value: Double, fromUnit: UnitTemperature, toUnit: UnitTemperature) -> Measurement<UnitTemperature> {
-        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
+    func convertTemperature(value: Double, from: UnitTemperature, to: UnitTemperature) -> Measurement<UnitTemperature> {
+        Measurement(value: value, unit: from).converted(to: to)
     }
     
-    func convertDistance(value: Double, fromUnit: UnitLength, toUnit: UnitLength) -> Measurement<UnitLength> {
-        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
+    func convertDistance(value: Double, from: UnitLength, to: UnitLength) -> Measurement<UnitLength> {
+        Measurement(value: value, unit: from).converted(to: to)
     }
     
-    func convertTime(value: Double, fromUnit: UnitDuration, toUnit: UnitDuration) -> Measurement<UnitDuration> {
-        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
+    func convertTime(value: Double, from: UnitDuration, to: UnitDuration) -> Measurement<UnitDuration> {
+        Measurement(value: value, unit: from).converted(to: to)
     }
     
     func convertTime(from time: String) -> String? {
