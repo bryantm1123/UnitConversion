@@ -8,23 +8,14 @@ public protocol UnitConversionProviding {
 
 final class UnitConversionProvider: UnitConversionProviding {
     func convertTemperature(value: Double, fromUnit: UnitTemperature, toUnit: UnitTemperature) -> Measurement<UnitTemperature> {
-        let converted = Measurement(value: value, unit: fromUnit).converted(to: toUnit)
-        return Measurement(value: converted.value.asWholeNumber(), unit: toUnit)
+        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
     }
     
     func convertDistance(value: Double, fromUnit: UnitLength, toUnit: UnitLength) -> Measurement<UnitLength> {
-        let converted = Measurement(value: value, unit: fromUnit).converted(to: toUnit)
-        return Measurement(value: converted.value.asWholeNumber(), unit: toUnit)
+        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
     }
     
     func convertTime(value: Double, fromUnit: UnitDuration, toUnit: UnitDuration) -> Measurement<UnitDuration> {
-        let converted = Measurement(value: value, unit: fromUnit).converted(to: toUnit)
-        return Measurement(value: converted.value.asWholeNumber(), unit: fromUnit)
-    }
-}
-
-private extension Double {
-    func asWholeNumber() -> Double {
-        return Double(Int(self))
+        Measurement(value: value, unit: fromUnit).converted(to: toUnit)
     }
 }
