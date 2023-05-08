@@ -50,4 +50,27 @@ final class UnitConversionProviderTests: XCTestCase {
         let seconds = subject.convertTime(value: testValue, fromUnit: .milliseconds, toUnit: .seconds)
         XCTAssertEqual(seconds.value.rounded(.toNearestOrAwayFromZero), 1.0)
     }
+    
+    func testConvert12HourTimeTo24HourTime() {
+        let testTime = "8:30 PM"
+        let testResult = "20:30"
+        
+        let result = subject.convertTime(from: testTime)
+        XCTAssertEqual(result, testResult)
+    }
+    
+    func testConvert24HourTimeTo12HourTime() {
+        let testTime = "20:30"
+        let testResult = "8:30 PM"
+        
+        let result = subject.convertTime(from: testTime)
+        XCTAssertEqual(result, testResult)
+    }
+    
+    func testTimeConverterReturnsNilOnInvalidInputFormat() {
+        let testTime = "20:30 PM"
+        
+        let result = subject.convertTime(from: testTime)
+        XCTAssertNil(result)
+    }
 }
