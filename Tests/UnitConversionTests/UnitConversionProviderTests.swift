@@ -36,4 +36,18 @@ final class UnitConversionProviderTests: XCTestCase {
         let miles = subject.convertDistance(value: testValue, fromUnit: .kilometers, toUnit: .miles)
         XCTAssertEqual(miles.value.rounded(.toNearestOrAwayFromZero), 3.0)
     }
+    
+    @available(iOS 13.0, *)
+    func testConversionFromSecondsToMilliseconds() {
+        let testValue = 1.0
+        let milliseconds = subject.convertTime(value: testValue, fromUnit: .seconds, toUnit: .milliseconds)
+        XCTAssertEqual(milliseconds.value.rounded(.toNearestOrAwayFromZero), 1000.0)
+    }
+    
+    @available(iOS 13.0, *)
+    func testConversionFromMillisecondsToSeconds() {
+        let testValue = 1000.0
+        let seconds = subject.convertTime(value: testValue, fromUnit: .milliseconds, toUnit: .seconds)
+        XCTAssertEqual(seconds.value.rounded(.toNearestOrAwayFromZero), 1.0)
+    }
 }
